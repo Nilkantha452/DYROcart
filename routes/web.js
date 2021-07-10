@@ -10,7 +10,7 @@ const statusController=require("../app/http/controllers/admin/statusController")
 const guest=require("../app/http/middleware/guest");
 const auth=require("../app/http/middleware/auth");
 const admin=require('../app/http/middleware/admin');
-
+const offerController=require("../app/http/controllers/offerController");
 
 function initRoutes(app)
 {
@@ -24,7 +24,8 @@ function initRoutes(app)
     app.post('/logout',registerController().logout);
     app.get('/cart',cartController().cart);
     app.post('/update-cart',cartController().update)
-    
+    //order route
+    app.get("/offers",offerController().offer)
     //customer routes
     app.post('/orders',auth,orderController().store)
     app.get('/customers/orders',auth,orderController().index)
